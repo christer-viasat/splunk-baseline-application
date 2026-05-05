@@ -44,6 +44,8 @@ Then:
 docker compose up -d
 ```
 
+> **Apple Silicon (ARM64):** Add `platform: linux/arm64` to the `splunk` service in `docker-compose.yml`.
+
 Verify script runs:
 ```bash
 docker exec splunk /opt/splunk/bin/splunk cmd python3 \
