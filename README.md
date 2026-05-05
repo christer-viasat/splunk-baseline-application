@@ -2,6 +2,27 @@
 
 Minimal Splunk scripted input template. Collects data from an external source and writes JSON to stdout for Splunk ingestion.
 
+## Structure
+
+```
+splunk-baseline-application/
+├── app/                        # Splunk app — mount this to the container
+│   ├── app.conf
+│   ├── bin/
+│   │   └── collect.py          # Implement get_data() here
+│   ├── default/
+│   │   ├── inputs.conf
+│   │   ├── props.conf
+│   │   └── transforms.conf
+│   ├── lookups/
+│   └── metadata/
+│       └── default.meta
+├── docker-compose.yml
+├── .editorconfig
+├── .gitignore
+└── README.md
+```
+
 ## Usage
 
 ### As a template for new apps
@@ -12,20 +33,15 @@ cd my-new-app
 ```
 
 Then:
-1. Update `app.conf` — fill in `author` and `description`
-2. Implement `get_data()` in `bin/collect.py`
-3. Update `default/inputs.conf` — set `interval` and `index`
-4. Update `default/props.conf` — adjust time parsing if needed
+1. Update `app/app.conf` — fill in `author` and `description`
+2. Implement `get_data()` in `app/bin/collect.py`
+3. Update `app/default/inputs.conf` — set `interval` and `index`
+4. Update `docker-compose.yml` — change app name in the volume path
 
 ### Test with Docker
 
 ```bash
-docker run -d \
-  -p 8000:8000 -p 8089:8089 \
-  -e SPLUNK_START_ARGS='--accept-license' \
-  -e SPLUNK_PASSWORD='admin123' \
-  -v $(pwd):/opt/splunk/etc/apps/my-new-app \
-  splunk/splunk:latest
+docker compose up -d
 ```
 
 Verify script runs:

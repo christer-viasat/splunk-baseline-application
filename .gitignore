@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Splunk
+*.log
+var/
+
+# OS
+.DS_Store
