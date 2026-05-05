@@ -15,6 +15,9 @@ splunk-baseline-application/
 │   │   ├── props.conf
 │   │   └── transforms.conf
 │   ├── lookups/
+│   ├── static/
+│   │   ├── appIcon.png         # 36x36 — replace with your icon
+│   │   └── appIcon_2x.png      # 72x72 — replace with your icon (retina)
 │   └── metadata/
 │       └── default.meta
 ├── docker-compose.yml
@@ -37,6 +40,18 @@ Then:
 2. Implement `get_data()` in `app/bin/collect.py`
 3. Update `app/default/inputs.conf` — set `interval` and `index`
 4. Update `docker-compose.yml` — change app name in the volume path
+5. Replace `app/static/appIcon.png` (36x36) and `app/static/appIcon_2x.png` (72x72) with your own icon
+
+### App icon
+
+Splunk requires two sizes:
+
+| File | Size |
+|------|------|
+| `app/static/appIcon.png` | 36×36 px |
+| `app/static/appIcon_2x.png` | 72×72 px (retina) |
+
+Placeholder icons are included. Replace both files with PNG images of the correct dimensions.
 
 ### Test with Docker
 
