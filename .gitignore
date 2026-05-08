@@ -6,7 +6,7 @@ __pycache__/
 
 # Splunk
 *.log
-!eventgen/samples/
+!eventgen/samples/*.log
 var/
 
 # OS
