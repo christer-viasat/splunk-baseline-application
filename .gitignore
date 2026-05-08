@@ -11,3 +11,6 @@ var/
 
 # OS
 .DS_Store
+
+# Superpowers workflow artifacts
+docs/superpowers/
