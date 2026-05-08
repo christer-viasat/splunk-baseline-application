@@ -11,3 +11,5 @@ services:
       - "8089:8089"
     volumes:
       - ./app:/opt/splunk/etc/apps/splunk-baseline-application
+      # Eventgen config — uncomment to enable (requires SA-Eventgen installed)
+      # - ./eventgen:/opt/splunk/etc/apps/splunk-baseline-application-eventgen
