@@ -37,14 +37,13 @@ cd my-new-app
 
 Then:
 
-**Rename the app** — replace `splunk-baseline-application` with your app name in every location:
+**Rename the app:**
 
-| File | Location |
-|------|----------|
-| `app/app.conf` | `id=` field |
-| `app/default/inputs.conf` | script path and `sourcetype =` |
-| `app/default/props.conf` | stanza header `[...]` |
-| `docker-compose.yml` | volume mount path |
+```bash
+./rename-app.sh my-new-app
+```
+
+This updates all occurrences of `splunk-baseline-application` in `app/default/app.conf`, `app/default/inputs.conf`, `app/default/props.conf`, and `docker-compose.yml`.
 
 Then configure:
 1. Update `app/app.conf` — fill in `author` and `description`
