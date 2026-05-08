@@ -22,6 +22,7 @@ FILES=(
     "app/default/inputs.conf"
     "app/default/props.conf"
     "docker-compose.yml"
+    "eventgen/default/eventgen.conf"
 )
 
 for f in "${FILES[@]}"; do
