@@ -69,7 +69,7 @@ Placeholder icons are included. Replace both files with PNG images of the correc
 docker compose up -d
 ```
 
-> **Apple Silicon (ARM64):** Add `platform: linux/arm64` to the `splunk` service in `docker-compose.yml`.
+> **Apple Silicon (ARM64):** Add `platform: linux/amd64` to the `splunk` service in `docker-compose.yml`.
 
 Verify script runs:
 ```bash
