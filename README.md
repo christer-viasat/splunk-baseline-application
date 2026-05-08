@@ -83,3 +83,34 @@ docker exec splunk /opt/splunk/bin/splunk search \
   "index=main sourcetype=my-new-app" \
   -auth admin:admin123
 ```
+
+## Eventgen (optional synthetic data)
+
+[SA-Eventgen](https://splunkbase.splunk.com/app/1924) generates synthetic events from sample data. Use it to develop and test dashboards, alerts, and correlation searches without real data.
+
+> **Never deploy `eventgen/` to production.** It is for local/dev only. Add `eventgen/` to your deployment exclusion list (deployment server, CI pipeline, or `.splunkignore`).
+
+### Prerequisites
+
+1. Download SA-Eventgen from [Splunkbase](https://splunkbase.splunk.com/app/1924)
+2. Install it to your Splunk instance via **Apps > Manage Apps > Install app from file**
+
+### Enable
+
+1. Uncomment the Eventgen volume mount in `docker-compose.yml`:
+   ```yaml
+   - ./eventgen:/opt/splunk/etc/apps/splunk-baseline-application-eventgen
+   ```
+2. Restart the container:
+   ```bash
+   docker compose restart splunk
+   ```
+
+### Customize
+
+- Edit `eventgen/default/eventgen.conf` — adjust `interval`, `count`, `index`, and `sourcetype`
+- Replace `eventgen/samples/example.log` with realistic JSON matching your `collect.py` output
+
+### Remove
+
+Delete the `eventgen/` directory and remove the commented volume line from `docker-compose.yml`.
